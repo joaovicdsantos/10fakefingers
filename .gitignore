@@ -1,0 +1,10 @@
+# environment
+.venv
+.env
+
+# editor
+.vim
+
+# python
+poetry.lock
+pyproject.toml
