@@ -12,7 +12,4 @@ password = getenv('password')
 
 
 tenfakefingers.login(driver, email, password)
-# tenfakefingers.type(driver, 'portuguese')
-
-
-# driver.quit()
+tenfakefingers.type(driver, 'portuguese')

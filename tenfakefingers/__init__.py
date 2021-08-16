@@ -11,7 +11,7 @@ def login(driver: WebDriver, email: str, password: str) -> NoReturn:
 
     driver.get(Config.login_url)
 
-    WebDriverWait(driver, 10).until(
+    WebDriverWait(driver, 15).until(
         EC.presence_of_element_located((By.ID, Config.id_email)))
 
     driver.find_element_by_id(Config.id_email).send_keys(email)
@@ -25,11 +25,14 @@ def type(driver: WebDriver, language: str) -> NoReturn:
 
     driver.get(f'{Config.test_url}{language}')
 
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-        (By.ID, Config.id_cookie)))
-    driver.find_element_by_xpath(Config.id_cookie).click()
+    try:
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located(
+            (By.ID, Config.id_cookie)))
+        driver.find_element_by_id(Config.id_cookie).click()
+    except:
+        pass
 
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+    WebDriverWait(driver, 15).until(EC.presence_of_element_located(
         (By.CSS_SELECTOR, Config.css_words)))
     words = driver.find_elements_by_css_selector(Config.css_words)
 
